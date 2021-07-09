@@ -91,16 +91,7 @@ export default function Application(props) {
 
   console.log(state.interviewers);
 
-  function bookInterview(id, interview) {
-    console.log(id, interview);
-  }
-
-  function save(name, interviewer) {
-    const interview = {
-      student: name,
-      interviewer
-    };
-  }
+  
 
   // part 2
   return (
