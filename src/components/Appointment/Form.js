@@ -18,7 +18,7 @@ export default function Form(props) {
     props.onCancel();
   };
 
-
+  const interviewObj = props.save(props.name, props.interviewer); //added today
 
 
   return (
