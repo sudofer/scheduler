@@ -17,7 +17,7 @@ export default function useVisualMode(initMode) {
       setHistory((prev) => prev.slice(0,-1))
     }
   }
-  //return {mode, transition, back}
+  return {mode, transition, back}
 
 } 
 
