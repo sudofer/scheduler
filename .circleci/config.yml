@@ -33,6 +33,7 @@ deploy:
         name: Push Master to Production
         command: |
           git push https://github.com/sudofer/scheduler.git master:production
+          
 workflows:
   version: 2
   test_and_deploy:
