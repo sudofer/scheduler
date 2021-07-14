@@ -58,7 +58,7 @@ export default function Appointment(props) {
    }
 
   return (
-    <>
+    <div data-testid="appointment">
       {mode === EMPTY && <Empty 
       onAdd={()=> transition(CREATE)} />}
 
@@ -75,7 +75,7 @@ export default function Appointment(props) {
       onSave={save}
       />)}
 
-      {mode === SAVING && <Status message='Saving appointment.'/>}
+      {mode === SAVING && <Status message='Saving'/>}
 
       {mode === CONFIRM && <Confirm message='Confirm?'
       onCancel={()=> {transition(SHOW)}}
@@ -94,7 +94,7 @@ export default function Appointment(props) {
       {mode === DELETING && <Status message='Deleting' />}
 
       {mode === ERROR_SAVE && <Error onClose={back} message='Did not save' />}
-    </>
+    </div>
   )
 }
 

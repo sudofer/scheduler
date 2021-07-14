@@ -25,7 +25,6 @@ export default function useApplicationData() {
   }, [])
 
   function bookInterview(id, interview) {
-    console.log(id, interview);
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -53,7 +52,8 @@ export default function useApplicationData() {
     let days = updateSpots(state, state.day, appointments)
 
     return axios.delete(`/api/appointments/${appID}`)
-    .then(() => setState((prev) => ({...prev, appointments, days})))
+    .then(() => setState((prev) => ({...prev, appointments, days}))) 
+    
   }
   return {cancelInterview, bookInterview, state, setDay}
 }
@@ -66,7 +66,6 @@ const updateSpots = (state, day, appointments) => {
   const listOfAppointmentIds = currentDayObj.appointments
   // Look for the null interviews in each appointment from the array
   const listOfNullAppointments = listOfAppointmentIds.filter(id => !appointments[id].interview)
-  console.log(listOfNullAppointments, `!!!!!!!!!!!!!`);
   // Sum them up
   const spots = listOfNullAppointments.length
   // update the value of the key 'spots' in the day with the sum I just made
