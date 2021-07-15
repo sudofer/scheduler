@@ -8,6 +8,7 @@ import useVisualMode from '../../hooks/useVisualMode';
 import Status from './Status';
 import Confirm from './Confirm';
 import Error from './Error';
+import Header from './Header';
 
 export default function Appointment(props) {
   const EMPTY = "EMPTY";
@@ -55,11 +56,13 @@ export default function Appointment(props) {
      .then(() => transition(EMPTY))
      .catch(error => transition(ERROR_DELETE, true));
    }
-
+    console.log(props.time);
   return (
-    <div data-testid="appointment">
+    <article data-testid="appointment" className="appointment">
+      <Header time={props.time}/>
       {mode === EMPTY && <Empty 
-      onAdd={()=> transition(CREATE)} />}
+      onAdd={()=> transition(CREATE)} 
+      />}
 
       {mode === SHOW && (<Show
       student={props.interview.student}
@@ -93,7 +96,7 @@ export default function Appointment(props) {
       {mode === DELETING && <Status message='Deleting' />}
 
       {mode === ERROR_SAVE && <Error onClose={back} message='Did not save' />}
-    </div>
+    </article>
   )
 }
 

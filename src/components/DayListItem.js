@@ -24,11 +24,9 @@ export default function DayListItem(props) {
       return spotMessage = '1 spot remaining'
     }
 
-    else if (props.spots === 2) {
-      return spotMessage = '2 spots remaining'
+    else {
+      return spotMessage = `${props.spots} spots remaining`
     }
-
-    else return spotMessage = props.spots;
   }
   formatSpots();
   return (
