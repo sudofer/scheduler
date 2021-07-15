@@ -8,6 +8,10 @@
 
 Install dependencies with `npm install`.
 
+## Installing database API 
+
+[Fork and Clone here.](https://github.com/lighthouse-labs/scheduler-api) Read scheduler-api's README for instructions on how to integrate it into this front-end application.
+
 ## Running Webpack Development Server
 
 ```sh
@@ -25,3 +29,10 @@ npm test
 ```sh
 npm run storybook
 ```
+## Screenshots
+
+!['Empty-menu'](https://github.com/sudofer/scheduler/blob/master/docs/empty-menu.png?raw=true)
+
+!['Form-menu'](https://github.com/sudofer/scheduler/blob/master/docs/form-menu.png?raw=true)
+
+!['Show-menu'](https://github.com/sudofer/scheduler/blob/master/docs/show-menu.png?raw=true)
