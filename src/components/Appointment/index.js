@@ -1,7 +1,6 @@
-import React, { Fragment, useState } from 'react';
+import React from 'react';
 import "components/Appointment/styles.scss"
 
-import Header from './Header';
 import Show from './Show';
 import Empty from './Empty';
 import Form from './Form';
