@@ -54,19 +54,21 @@ describe('Application', () => {
     await waitForElement(() => getByText(container, "Archie Cohen"));
   
     // 3. Click the "Add" button on the first empty appointment.
-    fireEvent.click(getByAltText(container, 'Add'));
+    const appointment = getAllByTestId(container, 'appointment')[0];
+    
+    fireEvent.click(getByAltText(appointment, 'Add'));
     // 4. Enter the name "Lydia Miller-Jones" into the input with the placeholder "Enter Student Name".
-    fireEvent.change(getByPlaceholderText(container, /enter student name/i), {
+    fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {
       target: { value: 'Lydia Miller-Jones' }
     })
     // 5. Click the first interviewer in the list.
-    fireEvent.click(getByAltText(container, 'Tori Malcolm'));
+    fireEvent.click(getByAltText(appointment, 'Tori Malcolm'));
     // 6. Click the "Save" button on that same appointment.
-    fireEvent.click(getByText(container, 'Save'));
+    fireEvent.click(getByText(appointment, 'Save'));
     // 7. Check that the element with the text "Saving" is displayed.
-    await waitForElement(() => getByText(container, "Saving"));
+    await waitForElement(() => getByText(appointment, "Saving"));
     // 8. Wait until the element with the text "Lydia Miller-Jones" is displayed.
-    await waitForElement(() => getByText(container, "Lydia Miller-Jones"));
+    await waitForElement(() => getByText(appointment, "Lydia Miller-Jones"));
     // 9. Check that the DayListItem with the text "Monday" also has the text "no spots remaining".
     const day = getAllByTestId(container, "day").find(day =>
       queryByText(day, "Monday")
@@ -127,21 +129,22 @@ describe('Application', () => {
   it("shows the save error when failing to save an appointment", async () => {
     axios.put.mockRejectedValueOnce();
 
-    const { container, debug } = render(<Application />);
+    const { container } = render(<Application />);
     
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
-    fireEvent.click(getByAltText(container, 'Add'));
+    const appointment = getAllByTestId(container, 'appointment')[0]
+    fireEvent.click(getByAltText(appointment, 'Add'));
 
-    fireEvent.change(getByPlaceholderText(container, /enter student name/i), {
+    fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {
       target: { value: 'Lydia Miller-Jones' }
     })
     // 5. Click the first interviewer in the list.
-    fireEvent.click(getByAltText(container, 'Tori Malcolm'));
+    fireEvent.click(getByAltText(appointment, 'Tori Malcolm'));
     // 6. Click the "Save" button on that same appointment.
-    fireEvent.click(getByText(container, 'Save'));
-    await waitForElement(() => getByText(container, "Error"));
-    fireEvent.click(getByAltText(container, 'Close'));
+    fireEvent.click(getByText(appointment, 'Save'));
+    await waitForElement(() => getByText(appointment, "Error"));
+    fireEvent.click(getByAltText(appointment, 'Close'));
 
   });
 })
