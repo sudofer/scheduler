@@ -4,7 +4,6 @@ import axios from "axios";
 import { render, cleanup, waitForElement, fireEvent, prettyDOM, getByText, getAllByTestId, getByPlaceholderText, getByAltText, queryByText, queryByAltText} from "@testing-library/react";
 
 import Application from "components/Application";
-import DayListItem from "components/DayListItem";
 
 afterEach(cleanup);
 
